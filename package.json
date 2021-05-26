@@ -39,8 +39,8 @@
     "whatwg-fetch": "^3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-heroku": "node server.js",
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
