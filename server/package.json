@@ -1,0 +1,40 @@
+{
+  "name": "portfolio",
+  "version": "0.0.1",
+  "description": "Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap",
+    "lint": "npx standard",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medaminehamidi/portfolio"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Dev",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1",
+    "file-loader": "^6.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
+    "oidc-client": "^1.10.1",
+    "whatwg-fetch": "^3.4.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "dotenv-webpack": "^7.0.2",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7"
+  },
+  "jest": {
+    "testMatch": [
+      "**/src/**/**.test.js"
+    ]
+  }
+}
