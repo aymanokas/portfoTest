@@ -1,22 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import style from './style'
 import fetch from 'node-fetch'
 import { push } from 'connected-react-router'
 import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router'
+import { useMediaQuery } from '@material-ui/core'
 
 const useStyles = createUseStyles(style)
 
-const Admin = () => {
+const EditPage = () => {
+  const matches = useMediaQuery('(min-width:1100px)')
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
   const [download, setDownload] = useState('')
   const [description, setDescription] = useState('')
   const dispatch = useDispatch()
-  const upload = (data) => {
-    fetch('/api/projects/addproject', {
+  const { slug } = useParams()
+  const edit = (data, slug) => {
+    fetch('/api/projects/editproject', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({ data: data, id: slug }),
       headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json())
@@ -24,11 +28,36 @@ const Admin = () => {
         console.warn(json)
       })
   }
-  const { inputClass, titleClass, inputAreaClass, buttonClass2, container, smallTitleClass, buttonClass, form, imageContainerStyle, imageStyle } = useStyles()
+  const remove = (slug) => {
+    fetch('/api/projects/deleteproject', {
+      method: 'POST',
+      body: JSON.stringify({ id: slug }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json())
+      .then(json => {
+        console.warn(json)
+      })
+  }
+  useEffect(() => {
+    fetch('/api/projects/getProjectById', {
+      method: 'POST',
+      body: JSON.stringify({ id: slug }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json())
+      .then(json => {
+        setName(json.project.title)
+        setImage(json.project.thumbnail)
+        setDownload(json.project.downloadLink)
+        setDescription(json.project.description)
+      })
+  }, [])
+  const { inputClass, titleClass, inputAreaClass, buttonClass2, container, smallTitleClass, buttonClass, form, imageContainerStyle, buttonClass3, imageStyle } = useStyles()
   return (
     <div className={container}>
       <div className={form}>
-        <p className={titleClass}>Add an Item to Main page</p>
+        <p className={titleClass}>Edit This item</p>
         <p className={smallTitleClass}>Name of the item</p>
         <input
           className={inputClass}
@@ -61,14 +90,24 @@ const Admin = () => {
           type='text'
           onChange={e => setDescription(e.target.value)}
         />
-        <button onClick={() => upload({ title: name, thumbnail: image, description: description, downloadLink: download })} className={buttonClass}>Add Item</button>
+        <button onClick={() => edit({ title: name, thumbnail: image, description: description, downloadLink: download }, slug)} className={buttonClass}>Edit Item</button>
+        <button
+          onClick={() => {
+            remove(slug)
+            dispatch(push('/'))
+          }}
+          className={buttonClass3}
+        >
+          Delete Item
+        </button>
         <button onClick={() => dispatch(push('/'))} className={buttonClass2}>Go to home</button>
       </div>
-      <div className={imageContainerStyle}>
-        <img alt='' src={image} className={imageStyle} />
-      </div>
+      {matches &&
+        <div className={imageContainerStyle}>
+          <img alt='' src={image} className={imageStyle} />
+        </div>}
     </div>
   )
 }
 
-export default Admin
+export default EditPage

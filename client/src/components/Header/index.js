@@ -9,7 +9,7 @@ import { push } from 'connected-react-router'
 
 const useStyles = createUseStyles(style)
 
-const Header =  ({ data, searchedData, setSearchedData }) => {
+const Header = ({ data, searchedData, setSearchedData }) => {
   const [search2, setSearch] = useState('')
   const dispatch = useDispatch()
   const isAuth = useSelector(state => state.auth.match)
@@ -17,15 +17,14 @@ const Header =  ({ data, searchedData, setSearchedData }) => {
     if (searchTerm.length === 0) return data
     return data.filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
   }
-  // const matches = useMediaQuery('(min-width:1100px)')
   const { logoStyle, topbarRightSide, topbar, lofStyle, topbarLeftSide, textinput, button, topSection, searchContainer, searchSubContainer, bigTitle } = useStyles()
   return (
     <>
       <div className={topSection}>
         <div className={topbar}>
           <div className={topbarRightSide}>
-            <img  alt='' src={logo2} className={logoStyle} />
-            <img  alt='' src={lof} className={lofStyle} />
+            <img alt='' src={logo2} className={logoStyle} />
+            <img alt='' src={lof} className={lofStyle} />
           </div>
           <div className={topbarLeftSide}>
             <Button variant='contained' onClick={() => dispatch(push('/admin'))} className={button}>

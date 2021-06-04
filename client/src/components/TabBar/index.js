@@ -9,11 +9,11 @@ const TabBar = () => {
   return (
     <>
       <div className={tabs}>
-        <div className={selectedTab}>
+        {/* <div className={selectedTab}>
           <Typography variant='h4' className={selectedTitle}>
             Home
           </Typography>
-        </div>
+        </div> */}
       </div>
     </>
   )

@@ -74,6 +74,19 @@ const style = {
     marginBottom: 64,
     marginLeft: 16
   },
+  buttonClass3: {
+    cursor: 'pointer',
+    marginTop: 52,
+    width: 260,
+    height: 52,
+    background: '#ff4c4c 0% 0% no-repeat padding-box',
+    border: '1px solid #ff4c4c',
+    borderRadius: 10,
+    color: '#fff',
+    fontSize: 20,
+    marginBottom: 64,
+    marginLeft: 16
+  },
   productImage: {
     width: 70
   },
@@ -122,8 +135,7 @@ const style = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 34,
-    height: 800
+    padding: 34
   },
   imageContainerStyle: {
     width: 350

@@ -74,6 +74,16 @@ const style = {
     borderRadius: 2,
     height: 400,
     backgroundColor: '#00000060'
+  },
+  edit: {
+    width: 100,
+    display: 'flex',
+    marginLeft: '16px !important',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 24,
+    border: '.3px solid #00000090',
+    borderRadius: 5
   }
 }
 

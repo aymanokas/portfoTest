@@ -6,15 +6,15 @@ const PrivateRoute = ({ component: Component, login, onEnter, ...rest }) => {
   console.warn('booooooooooooom')
 
   const isAuth = useSelector(state => state.auth.match)
-  return(
-  <Route
-    {...rest}
-    render={props => {
-      return isAuth
-        ? (<Component {...props} />)
-        : (<Redirect to='/login' />)
-    }}
-  />
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        return isAuth
+          ? (<Component {...props} />)
+          : (<Redirect to='/login' />)
+      }}
+    />
   )
 }
 
