@@ -10,6 +10,7 @@ import image7 from './images/image.jpg'
 import image8 from './images/mostach.jpg'
 import bg from './images/background.jpg'
 import lof from './images/ff.png'
+import underConstruction from './images/underConstruction.png'
 
 export {
   logo,
@@ -23,5 +24,6 @@ export {
   image7,
   image8,
   logo2,
-  lof
+  lof,
+  underConstruction
 }

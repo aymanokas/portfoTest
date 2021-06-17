@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "scoopstudio",
   "version": "0.0.1",
-  "description": "Portfolio",
+  "description": "scoopstudio",
   "main": "index.js",
   "scripts": {
     "lint": "npx standard",
