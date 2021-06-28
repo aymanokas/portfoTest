@@ -9,6 +9,7 @@ const useStyles = createUseStyles(style)
 const Login = ({ setAccess }) => {
   const isAuth = useSelector(state => state.auth.match)
   const isloading = useSelector(state => state.auth.isloading)
+  const wrongInput = useSelector(state => state.auth.inputWrong)
   const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [pwd, setPwd] = useState('')
@@ -33,7 +34,7 @@ const Login = ({ setAccess }) => {
           type='password'
           onChange={e => setPwd(e.target.value)}
         />
-        {!isAuth &&
+        {wrongInput &&
           <div className={redBox}>
             <p className={smallTitleClass}>wrong input</p>
           </div>}

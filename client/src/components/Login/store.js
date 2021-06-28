@@ -3,6 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects'
 import fetch from '../../core/fetch'
 
 const initialState = {
+  inputWrong: false
 }
 
 export const reducer = (state = initialState, { type, data }) => {
@@ -11,6 +12,7 @@ export const reducer = (state = initialState, { type, data }) => {
       return {
         ...state,
         match: data,
+        inputWrong: !data,
         isloading: false
       }
     case LOGIN_FAILED:
@@ -30,21 +32,19 @@ export const reducer = (state = initialState, { type, data }) => {
 }
 export const loginAction = (data) => ({ type: LOGIN_REQUESTED, data })
 
-function* loginGenerator(data) {
+function * loginGenerator (data) {
   const { username, password } = data.data
-  console.log(username, password)
   try {
     const isLoged = yield fetch(queries.signin, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username, password }) })
     yield put({ type: LOGIN_SUCCESS, data: isLoged.match })
-    console.log(isLoged.match)
     if (isLoged.match) yield put(push('/admin'))
   } catch (err) {
-    yield put({ type: LOGIN_FAILED, data: err  })
+    yield put({ type: LOGIN_FAILED, data: err })
     console.log(err)
   }
 }
 
-export function* loginRootSaga() {
+export function * loginRootSaga () {
   yield takeLatest(LOGIN_REQUESTED, loginGenerator)
 }
 
@@ -56,4 +56,3 @@ const queries = {
 const LOGIN_SUCCESS = 'SET_USER_PROFILE_SUCCESS'
 const LOGIN_FAILED = 'SET_USER_PROFILE_FAIL'
 const LOGIN_REQUESTED = 'LOGIN_REQUESTED'
-

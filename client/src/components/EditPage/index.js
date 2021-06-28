@@ -5,7 +5,7 @@ import fetch from 'node-fetch'
 import { push } from 'connected-react-router'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
-import { useMediaQuery } from '@material-ui/core'
+import { FormControl, InputLabel, MenuItem, Select, useMediaQuery } from '@material-ui/core'
 
 const useStyles = createUseStyles(style)
 
@@ -15,6 +15,7 @@ const EditPage = () => {
   const [image, setImage] = useState('')
   const [download, setDownload] = useState('')
   const [description, setDescription] = useState('')
+  const [categorie, setCategorie] = useState('')
   const dispatch = useDispatch()
   const { slug } = useParams()
   const edit = (data, slug) => {
@@ -51,9 +52,10 @@ const EditPage = () => {
         setImage(json.project.thumbnail)
         setDownload(json.project.downloadLink)
         setDescription(json.project.description)
+        setCategorie(json.project.categoryId)
       })
-  }, [])
-  const { inputClass, titleClass, inputAreaClass, buttonClass2, container, smallTitleClass, buttonClass, form, imageContainerStyle, buttonClass3, imageStyle } = useStyles()
+  }, [slug])
+  const { inputClass, titleClass, inputAreaClass, buttonClass2, dropDownClass, container, smallTitleClass, buttonClass, form, imageContainerStyle, buttonClass3, imageStyle } = useStyles()
   return (
     <div className={container}>
       <div className={form}>
@@ -82,6 +84,18 @@ const EditPage = () => {
           type='text'
           onChange={e => setDownload(e.target.value)}
         />
+        <FormControl variant='outlined' className={dropDownClass}>
+          <InputLabel>Category</InputLabel>
+          <Select
+            value={categorie}
+            onChange={(e) => setCategorie(e.target.value)}
+          >
+            <MenuItem value={1}>Projects</MenuItem>
+            <MenuItem value={2}>PNG Cutout</MenuItem>
+            <MenuItem value={3}>CAD</MenuItem>
+            <MenuItem value={4}>Learning</MenuItem>
+          </Select>
+        </FormControl>
         <p className={smallTitleClass}>Description</p>
         <textarea
           className={inputAreaClass}
@@ -90,7 +104,7 @@ const EditPage = () => {
           type='text'
           onChange={e => setDescription(e.target.value)}
         />
-        <button onClick={() => edit({ title: name, thumbnail: image, description: description, downloadLink: download }, slug)} className={buttonClass}>Edit Item</button>
+        <button onClick={() => edit({ title: name, thumbnail: image, description: description, downloadLink: download, categoryId: categorie }, slug)} className={buttonClass}>Edit Item</button>
         <button
           onClick={() => {
             remove(slug)

@@ -17,6 +17,11 @@ const style = {
     fontFamily: '\'Roboto\', sans-serif',
     backgroundColor: '#00000008'
   },
+  dropDownClass: {
+    width: '82.5%',
+    margin: '10px 0 10px 0 !important',
+    height: 45
+  },
   inputAreaClass: {
     border: '1px solid rgba(0, 0, 0, 0.12)',
     '&::placeholder': {

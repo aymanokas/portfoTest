@@ -6,15 +6,16 @@ import ImageGalerie from '../../components/ImageGalerie'
 const HomePage = () => {
   const [data, setData] = useState([])
   const [searchedData, setSearchedData] = useState(data)
+  const [tab, setTab] = useState(1)
   useEffect(() => {
     window.fetch('/api/projects/getProjects')
       .then(response => response.json())
       .then(data => {
-        setSearchedData([...data.projects])
-        setData([...data.projects])
+        data = data.projects.filter(e => e.categoryId === tab + 1)
+        setSearchedData([...data])
+        setData([...data])
       })
-  }, [])
-  const [tab, setTab] = useState(1)
+  }, [tab])
   return (
     <>
       <Header data={data} searchedData={searchedData} setSearchedData={setSearchedData} />

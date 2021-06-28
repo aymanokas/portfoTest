@@ -4,6 +4,7 @@ import style from './style'
 import fetch from 'node-fetch'
 import { push } from 'connected-react-router'
 import { useDispatch } from 'react-redux'
+import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core'
 
 const useStyles = createUseStyles(style)
 
@@ -12,6 +13,7 @@ const Admin = () => {
   const [image, setImage] = useState('')
   const [download, setDownload] = useState('')
   const [description, setDescription] = useState('')
+  const [categorie, setCategorie] = useState('')
   const dispatch = useDispatch()
   const upload = (data) => {
     fetch('/api/projects/addproject', {
@@ -24,7 +26,7 @@ const Admin = () => {
         console.warn(json)
       })
   }
-  const { inputClass, titleClass, inputAreaClass, buttonClass2, container, smallTitleClass, buttonClass, form, imageContainerStyle, imageStyle } = useStyles()
+  const { inputClass, titleClass, dropDownClass, inputAreaClass, buttonClass2, container, smallTitleClass, buttonClass, form, imageContainerStyle, imageStyle } = useStyles()
   return (
     <div className={container}>
       <div className={form}>
@@ -53,6 +55,18 @@ const Admin = () => {
           type='text'
           onChange={e => setDownload(e.target.value)}
         />
+        <FormControl variant='outlined' className={dropDownClass}>
+          <InputLabel>Category</InputLabel>
+          <Select
+            value={categorie}
+            onChange={(e) => setCategorie(e.target.value)}
+          >
+            <MenuItem value={1}>Projects</MenuItem>
+            <MenuItem value={2}>PNG Cutout</MenuItem>
+            <MenuItem value={3}>CAD</MenuItem>
+            <MenuItem value={4}>Learning</MenuItem>
+          </Select>
+        </FormControl>
         <p className={smallTitleClass}>Description</p>
         <textarea
           className={inputAreaClass}
@@ -61,7 +75,7 @@ const Admin = () => {
           type='text'
           onChange={e => setDescription(e.target.value)}
         />
-        <button onClick={() => upload({ title: name, thumbnail: image, description: description, downloadLink: download })} className={buttonClass}>Add Item</button>
+        <button onClick={() => upload({ title: name, thumbnail: image, description: description, downloadLink: download, categoryId: categorie })} className={buttonClass}>Add Item</button>
         <button onClick={() => dispatch(push('/'))} className={buttonClass2}>Go to home</button>
       </div>
       <div className={imageContainerStyle}>

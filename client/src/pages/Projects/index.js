@@ -9,8 +9,9 @@ const HomePage = () => {
     window.fetch('/api/projects/getProjects')
       .then(response => response.json())
       .then(data => {
-        setSearchedData([...data.projects])
-        setData([...data.projects])
+        data = data.projects.filter(e => e.categoryId === 1)
+        setSearchedData([...data])
+        setData([...data])
       })
   }, [])
   return (
