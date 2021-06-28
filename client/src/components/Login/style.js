@@ -19,9 +19,18 @@ const style = {
   },
   redBox: {
     width: '84%',
-    height: 29,
+    height: 32,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#ff000054',
-    borderRadius: 5
+    borderRadius: 5,
+    marginTop: 16
+  },
+  warningClass: {
+    fontSize: 19,
+    fontFamily: '\'Roboto\', sans-serif',
+    color: '#fff'
   },
   titleClass: {
     fontSize: 32,
