@@ -14,10 +14,11 @@ const HomePage = () => {
         setData([...data.projects])
       })
   }, [])
+  const [tab, setTab] = useState(1)
   return (
     <>
       <Header data={data} searchedData={searchedData} setSearchedData={setSearchedData} />
-      <TabBar />
+      <TabBar setTab={setTab} index={tab} />
       <ImageGalerie data={searchedData} />
     </>
   )

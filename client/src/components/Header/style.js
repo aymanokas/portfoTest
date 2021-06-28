@@ -27,14 +27,25 @@ const style = {
   },
   title: {
     fontSize: '19px !important',
-    paddingLeft: 12,
+    paddingLeft: 8,
+    paddingRight: 16,
+    width: '80px !important',
+    justifyContent: 'center',
+    display: 'flex',
+    color: '#949391 !important',
+    '&:hover': {
+      color: '#fff !important'
+    },
+    cursor: 'pointer'
+  },
+  selectedTitle: {
+    fontSize: '19px !important',
+    paddingLeft: 8,
+    paddingRight: 16,
     width: '80px !important',
     justifyContent: 'center',
     display: 'flex',
     color: '#fff !important',
-    '&:hover': {
-      color: '#05a081 !important'
-    },
     cursor: 'pointer'
   },
   title2: {
@@ -54,10 +65,10 @@ const style = {
   },
   topSection: {
     backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(${bg})`,
-    backgroundPosition: 'left top, right top',
+    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat, no-repeat',
     backgroundSize: 'cover',
-    height: 380,
+    height: 600,
     padding: 16
   },
   searchContainer: {
@@ -65,25 +76,26 @@ const style = {
     width: '100%',
     justifyContent: 'center',
     display: 'flex',
-    alignItem: 'center'
+    alignItems: 'center'
   },
   searchSubContainer: {
     height: 300,
-    width: 650,
+    width: 907,
     justifyContent: 'center',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column'
   },
   bigTitle: {
-    fontSize: '36px !important',
-    lineHeight: '48px !important',
+    fontSize: '66px !important',
+    lineHeight: '68px !important',
     paddingLeft: 12,
     width: '100% !important',
     fontWeight: 'bold !important',
     justifyContent: 'center',
     display: 'flex',
     color: '#fff !important',
+    textAlign: 'center',
     marginBottom: '12px !important'
   },
   textinput: {

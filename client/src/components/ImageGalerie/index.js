@@ -8,7 +8,7 @@ const useStyles = createUseStyles(style)
 
 const ImageGalerie = ({ data }) => {
   const matches = useMediaQuery('(min-width:1100px)')
-  const { titleSection, title, edit, cardDes, cardTitle, cardContainer, picsContainer, picsBigRow, picsRow, image, placeholder } = useStyles(matches)
+  const { edit, cardDes, cardTitle, cardContainer, picsContainer, picsBigRow, picsRow, image, placeholder } = useStyles(matches)
   const isAuth = useSelector(state => state.auth.match)
   const dispatch = useDispatch()
   const chunkArray = (arr, n) => {
@@ -20,14 +20,8 @@ const ImageGalerie = ({ data }) => {
     return chunks
   }
   const newdata = chunkArray(data, 4)
-  console.warn(newdata)
   return (
     <>
-      {/* <div className={titleSection}>
-        <Typography variant='h4' className={title}>
-          Free Stock Photos
-        </Typography>
-      </div> */}
       <div className={picsContainer}>
         <div className={picsBigRow}>
           <div className={picsRow}>

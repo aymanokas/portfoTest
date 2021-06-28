@@ -4,16 +4,27 @@ import style from './style'
 
 const useStyles = createUseStyles(style)
 
-const TabBar = () => {
-  const { tabs, selectedTab, selectedTitle } = useStyles()
+const TabBar = ({ setTab, index }) => {
+  const { tabs, selectedTab, title, tab, selectedTitle } = useStyles()
+
   return (
     <>
       <div className={tabs}>
-        {/* <div className={selectedTab}>
-          <Typography variant='h4' className={selectedTitle}>
-            Home
+        <div className={index === 1 ? selectedTab : tab}>
+          <Typography variant='h4' onClick={() => setTab(1)} className={index === 1 ? selectedTitle : title}>
+            PNG Cutout
           </Typography>
-        </div> */}
+        </div>
+        <div className={index === 2 ? selectedTab : tab}>
+          <Typography variant='h4' onClick={() => setTab(2)} className={index === 2 ? selectedTitle : title}>
+            CAD
+          </Typography>
+        </div>
+        <div className={index === 3 ? selectedTab : tab}>
+          <Typography variant='h4' onClick={() => setTab(3)} className={index === 3 ? selectedTitle : title}>
+            Learning
+          </Typography>
+        </div>
       </div>
     </>
   )

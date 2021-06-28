@@ -8,16 +8,16 @@ import ReactDOM from 'react-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-      <ReduxProvider store={store}>
-    <PersistGate persistor={persistor}>
-      <Routes />
-    </PersistGate>
-  </ReduxProvider>
+    <ReduxProvider store={store}>
+      <PersistGate persistor={persistor}>
+        <Routes />
+      </PersistGate>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals()

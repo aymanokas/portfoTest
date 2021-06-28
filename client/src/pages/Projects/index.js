@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Header from '../../components/Header'
-import TabBar from '../../components/TabBar'
 import ImageGalerie from '../../components/ImageGalerie'
 
 const HomePage = () => {
@@ -17,7 +16,6 @@ const HomePage = () => {
   return (
     <>
       <Header data={data} searchedData={searchedData} setSearchedData={setSearchedData} />
-      <TabBar />
       <ImageGalerie data={searchedData} />
     </>
   )

@@ -8,7 +8,7 @@ import image5 from './images/fight.jpg'
 import image6 from './images/hide.jpg'
 import image7 from './images/image.jpg'
 import image8 from './images/mostach.jpg'
-import bg from './images/background.jpg'
+import bg from './images/headerBg.jpg'
 import lof from './images/ff.png'
 import underConstruction from './images/underConstruction.png'
 
