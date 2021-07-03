@@ -8,9 +8,6 @@ import Projects from '../pages/Projects'
 import Resources from '../pages/Resources'
 import { history } from '../store'
 import PrivateRoute from '../components/PrivateRoute'
-import WellKnown from './wellKnown'
-import Well from './well'
-// import UnderConstruction from '../pages/UnderConstruction'
 
 const Routes = _ =>
   <ConnectedRouter history={history}>
@@ -24,16 +21,11 @@ const Routes = _ =>
       <Route exact path={LoginPath}>
         <Login />
       </Route>
-      <Route exact path={WellKnown1Path}>
-        <WellKnown />
-      </Route>
-      <Route exact path={WellPath}>
-        <Well />
-      </Route>
       <PrivateRoute exact path={EditPath} component={EditPage} />
       <PrivateRoute exact path={AdminPath} component={Admin} />
     </Switch>
   </ConnectedRouter>
+
 
 export const HomePath = '/'
 export const ErrorPath = '/error'
@@ -41,7 +33,5 @@ export const ResourcesPath = '/resources'
 export const AdminPath = '/admin'
 export const LoginPath = '/login'
 export const EditPath = '/edit/:slug'
-export const WellKnown1Path = '/.well-known/acme-challenge/JjNP3BUtx8dhlkUGzk_xcoATqMYAxY1uMhDmFc48XKg'
-export const WellPath  = '/.well-known/acme-challenge/jx552_1uStiXMszt3teNTf2JGo-FgX4MZ0GM_B2hRFY'
 
 export default Routes
